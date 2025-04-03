@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #F6F7F8;
+}
+
+.bg-banner{
+    background-image: url(/assets/img/bg.png);
+}
