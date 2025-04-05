@@ -31,76 +31,29 @@
     </header>
     <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Conheça nosso menu</h2>
     <div id="menu">
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="font-bold text-3xl">Frango</h2>
+        </div>
         <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
-            <div class="flex gap-2">
-                <img src="assets/img/paulista.jpg" alt="Pastel-1" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+            <div class="card flex gap-2 p-4 rounded">
+                <img src="assets/img/paulista.jpg" alt="paulista" class="w-28 h-28 rounded-md">
                 <div class="w-full">
                     <p class="font-bold">Paulista</p>
                     <p class="text-sm">Frango, calabresa, cebola, orégano, azeitona e mussarela.</p>
 
                     <div class="flex items-center gap-2 justify-between mt-3">
                         <p class="font-bold text-lg">R$ 16,00</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
                         data-name="Paulista"
                         data-price="16.00">
-                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="flex gap-2 w-full">
-                <img src="assets/img/bravo.jpg" alt="Pastel-2" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-
-                <div class="w-full">
-                    <p class="font-bold">Bravo</p>
-                    <p class="text-sm">Calabresa, mussarela, alho torrado, cebola e ovo de codorna.</p>
-
-                    <div class="flex items-center gap-2 justify-between mt-3">
-                        <p class="font-bold text-lg">R$ 14,00</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-                        data-name="Bravo"
-                        data-price="14.00">
-                            <i class=" fa fa-cart-plus text-lg text-white"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="flex gap-2">
-                <img src="assets/img/beleza.jpg" alt="Pastel-1" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-                <div class="w-full">
-                    <p class="font-bold">Beleza</p>
-                    <p class="text-sm">Calabresa, mussarela, azeitona e tomate.</p>
-
-                    <div class="flex items-center gap-2 justify-between mt-3">
-                        <p class="font-bold text-lg">R$ 12,50</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-                        data-name="Beleza"
-                        data-price="12.50">
-                            <i class=" fa fa-cart-plus text-lg text-white"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex gap-2 w-full">
-                <img src="assets/img/delicia.jpg" alt="Pastel-2" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
-
-                <div class="w-full">
-                    <p class="font-bold">Delícia</p>
-                    <p class="text-sm">Carne, mussarela, alho torrado e ovo de codorna.</p>
-
-                    <div class="flex items-center gap-2 justify-between mt-3">
-                        <p class="font-bold text-lg">R$ 14,00</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-                        data-name="Delícia"
-                        data-price="14.00">
-                            <i class=" fa fa-cart-plus text-lg text-white"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+ 
         </main>
 
         <div class="mx-auto max-w-7xl px-2 my-2">
@@ -109,14 +62,14 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
 
-            <div class="flex gap-2 w-full">
-                <img src="assets/img/refri-1.png" alt="Cola lata" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/img/coca.png" alt="Coca-Cola" class="w-28 h-28 rounded-md">
                 <div class="w-full">
-                    <p class="font-bold">Coca lata</p>
+                    <p class="font-bold">Coca-Cola</p>
 
                     <div class="flex items-center gap-2 justify-between mt-3">
                         <p class="font-bold text-lg">R$ 5,00</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
                         data-name="Coca lata"
                         data-price="5">
                             <i class=" fa fa-cart-plus text-lg text-white"></i>
@@ -125,15 +78,15 @@
                 </div>
             </div>
 
-            <div class="flex gap-2 w-full">
-                <img src="assets/img/refri-2.png" alt="Guaraná lata" class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300">
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/img/guarana.png" alt="Guaraná" class="w-28 h-28 rounded-md">
                 <div class="w-full">
-                    <p class="font-bold">Guaraná lata</p>
+                    <p class="font-bold">Guaraná</p>
 
                     <div class="flex items-center gap-2 justify-between mt-3">
                         <p class="font-bold text-lg">R$ 5,00</p>
-                        <button class="bg-gray-900 px-5 rounded add-to-cart-btn"
-                        data-name="Guaraná lata"
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaraná"
                         data-price="5">
                             <i class=" fa fa-cart-plus text-lg text-white"></i>
                         </button>
@@ -165,10 +118,10 @@
         </div>
     </div>
 
-    <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
-        <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
-            (<span id="cart-count">0</span>)
-            Veja meu carrinho
+    <footer class="w-full bg-primary fixed bottom-0 z-40 flex items-center justify-center">
+        <button class="w-full h-full p-3 flex justify-center items-center gap-2 text-white font-bold hover:bg-orange-300 duration-300" id="cart-btn">
+            <span id="cart-count" class=" bg-white rounded-full text-primary text-sm w-6 h-6 flex items-center justify-center">0</span>
+            Ver carrinho
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
     </footer>
