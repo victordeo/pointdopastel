@@ -1,15 +1,8 @@
 {
-  "name": "cardapio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i assets/styles/style.css -o assets/styles/output.css --watch"
+    "dev": "npx tailwindcss -i ./src/assets/styles/style.css -o ./src/assets/styles/output.css --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.17"
   }
 }

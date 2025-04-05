@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f5f7;
+}
+
+.bg-banner{
+    background-image: url(/src/assets/images/bg.png);
+}
+
+.bg-primary{
+    background-color: #f38b1c;
+}
+
+.text-primary {
+    color: #f38b1c;
+}
+
+.card{
+    --tw-bg-opacity: 1;
+  background-color: rgba(255,255,255,var(--tw-bg-opacity));
+  border-color: rgba(0,0,0,.12);
+  border-radius:.5rem;
+  border-width: 1px;
+}
