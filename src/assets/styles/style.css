@@ -15,11 +15,19 @@ body {
 }
 
 .bg-primary{
-    background-color: #f38b1c;
+    background-color: #e99f2e;
 }
 
 .text-primary {
     color: #f38b1c;
+}
+
+.text-r{
+    color: #e73333;
+}
+
+.text-b{
+    -webkit-text-stroke: 1.5px white;
 }
 
 .card{

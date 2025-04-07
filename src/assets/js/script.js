@@ -49,7 +49,7 @@ function addToCart(name, price) {
             quantity: 1
         })
         Toastify({
-            text: "ÍTEM ADICIONADO AO CARRINHO!",
+            text: "Item adicionado ao carrinho!",
             duration: 3000,
             close: true,
             gravity: "top",
