@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="/src/assets/styles/output.css">
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/src/assets/images/favicon.ico" type="image/x-icon">
     <title>Point do Pastel</title>
 </head>
 <body>
@@ -1256,23 +1256,27 @@
             </div>
         </div>
     </div>
-    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden" id="cart-modal">
-        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
-            <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
-            <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
-            <p class="text-medium font-semibold text-gray-700">Total: <span id="cart-total">0,00</span></p>
-            <p class="font-bold mt-4">Endereço de entrega:</p>
-            <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-1 rounded my-1">
-            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
-            <div class="flex items-center justify-between mt-5 w-full">
-                <button id="close-modal-btn">Fechar</button>
-                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
+    <div id="cart-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl mb-4">Meu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="mt-4">
+                <label for="address" class="block font-medium text-gray-700">Endereço de entrega:</label>
+                <input type="text" id="address" placeholder="Digite seu endereço" class="mt-1 p-2 border border-gray-200 w-full rounded text-sm font-light text-gray-500">
+            </div>
+            <div class="mt-4 flex justify-between">
+                <span class="text-medium font-semibold text-gray-700">Total</span>
+                <span id="cart-total" class="text-medium font-semibold text-gray-700">R$ 0,00</span>
+            </div>
+            <div class="mt-4 flex justify-between">
+                <button id="close-modal-btn" class="px-4 py-2 bg-red-600 text-white rounded-md">Fechar</button>
+                <button id="checkout-btn" class="px-4 py-2 bg-green-600 text-white rounded-md">Finalizar</button>
             </div>
         </div>
     </div>
     <footer class="w-full bg-primary fixed bottom-0 z-40 flex items-center justify-center">
         <button class="w-full h-full p-2 flex justify-center items-center gap-2 text-medium text-white font-semibold hover:bg-orange-300 duration-300" id="cart-btn">
-            <span id="cart-count" class=" bg-white rounded-full text-primary text-sm w-6 h-6 flex items-center justify-center">0</span>
+            <span id="cart-count" class="bg-white rounded-full text-primary text-sm w-6 h-6 flex items-center justify-center">0</span>
             Ver carrinho
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
