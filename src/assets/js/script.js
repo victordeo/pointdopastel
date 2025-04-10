@@ -1,191 +1,153 @@
-const menu = document.getElementById('menu');
-const cartBtn = document.getElementById('cart-btn');
-const cartModal = document.getElementById('cart-modal');
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotal = document.getElementById('cart-total');
-const checkoutBtn = document.getElementById('checkout-btn');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const cartCounter = document.getElementById('cart-count');
-const addressInput = document.getElementById('address');
-const addressWarn = document.getElementById('address-warn');
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
+    const cartModal = document.getElementById("cart-modal");
+    const closeModalBtn = document.getElementById("close-modal-btn");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+    const cartBtn = document.getElementById("cart-btn");
 
-let cart = [];
+    let cart = [];
 
-cartBtn.addEventListener('click', function() {
-    updateCartModal()
-    cartModal.style.display = 'flex'
-});
-
-cartModal.addEventListener('click', function(event) {
-    if (event.target === cartModal) {
-        cartModal.style.display = 'none'
-    }
-});
-
-closeModalBtn.addEventListener('click', function() {
-    cartModal.style.display = 'none'
-});
-
-menu.addEventListener('click', function(event) {
-    let parentButton = event.target.closest('.add-to-cart-btn')
-
-    if (parentButton) {
-        const name = parentButton.getAttribute('data-name')
-        const price = parseFloat(parentButton.getAttribute('data-price'))
-        addToCart(name, price)
-    }
-});
-
-function addToCart(name, price) {
-    const existingItem = cart.find(item => item.name === name)
-
-    if (existingItem) {
-        existingItem.quantity += 1
-        return
-    } else {
-        cart.push({
-            name,
-            price,
-            quantity: 1
-        })
-        Toastify({
-            text: "Item adicionado ao carrinho!",
-            duration: 3000,
-            close: true,
-            gravity: "top",
-            position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "rgb(34 197 94)",
-            },
-        }).showToast();
+    function formatCurrency(value) {
+        return `R$ ${value.toFixed(2).replace('.', ',')}`;
     }
 
-    updateCartModal()
-};
+    function updateCart() {
+        cartItems.innerHTML = '';
+        let total = 0;
+        let itemCount = 0;
 
-function updateCartModal() {
-    cartItemsContainer.innerHTML = ''
-    let total = 0
+        cart.forEach((item, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("flex", "justify-between", "items-center", "mb-1");
 
-    cart.forEach(item => {
-        const cartItemElement = document.createElement('div')
-        cartItemElement.classList.add('flex', 'justify-between', 'mb-4', 'flex-col')
-        cartItemElement.innerHTML = `
-            <div class="flex items-center justify-between">
-               <div>
-                <p class="font-medium">${item.name}</p>
-                <p>Qtd: ${item.quantity}</p>
-                <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
-               </div>
+            const itemText = document.createElement("p");
+            itemText.classList.add("flex", "items-center", "text-medium", "font-semibold", "text-gray-700");
+            itemText.innerHTML = `${item.name} x${item.quantity} ${formatCurrency(item.price)}`;
+            itemDiv.appendChild(itemText);
 
-            <button class="remove-from-cart-btn" data-name="${item.name}">
-                Remover
-            </button>
-            </div>
-        `
+            const removeBtn = document.createElement("button");
+            removeBtn.textContent = "Remover";
+            removeBtn.classList.add("text-red-600", "cursor-pointer", "ml-4", "font-medium");
+            removeBtn.addEventListener("click", () => removeOneFromCart(item.name));
+            itemDiv.appendChild(removeBtn);
 
-        total += item.price * item.quantity
+            cartItems.appendChild(itemDiv);
 
-        cartItemsContainer.appendChild(cartItemElement)
-    })
+            const observationInput = document.createElement("input");
+            observationInput.type = "text";
+            observationInput.placeholder = "Observação para este item";
+            observationInput.classList.add("mb-4", "mt-0", "p-2", "border", "border-gray-200", "w-full", "rounded", "text-sm", "font-light", "text-gray-500");
+            observationInput.addEventListener("input", (e) => {
+                item.observation = e.target.value;
+            });
 
-    cartTotal.textContent = total.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    })
+            cartItems.appendChild(observationInput);
 
-    cartCounter.innerHTML = cart.length
-};
+            total += item.price * item.quantity;
+            itemCount += item.quantity;
+        });
 
-cartItemsContainer.addEventListener('click', function(event) {
-    if (event.target.classList.contains('remove-from-cart-btn')) {
-        const name = event.target.getAttribute('data-name')
-
-        removeItemCart(name);
+        cartTotal.textContent = formatCurrency(total);
+        cartCount.textContent = itemCount;
     }
-});
 
-function removeItemCart(name) {
-    const index = cart.findIndex(item => item.name === name)
-
-    if (index !== -1) {
-        const item = cart[index]
-
-        if (item.quantity > 1) {
-            item.quantity -= 1
-            updateCartModal();
-            return;
+    function addToCart(name, price) {
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ name, price, quantity: 1, observation: "" });
         }
-
-        cart.splice(index, 1);
-        updateCartModal();
+        updateCart();
+        showToast(`${name} adicionado ao carrinho!`);
     }
-}
 
-addressInput.addEventListener('input', function(event) {
-    let inputValue = event.target.value;
-
-    if (inputValue !== '') {
-        addressInput.classList.remove('border-red-500')
-        addressWarn.classList.add('hidden')
+    function removeOneFromCart(name) {
+        const item = cart.find(item => item.name === name);
+        if (item) {
+            if (item.quantity > 1) {
+                item.quantity -= 1;
+            } else {
+                cart = cart.filter(item => item.name !== name);
+            }
+        }
+        updateCart();
     }
-});
 
-checkoutBtn.addEventListener('click', function() {
-    const isOpen = checkRestaurantOpen();
-    if (!isOpen) {
+    function showToast(message) {
         Toastify({
-            text: "O RESTAURANTE ESTÁ FECHADO NO MOMENTO!",
+            text: message,
             duration: 3000,
             close: true,
             gravity: "top",
             position: "right",
-            stopOnFocus: true,
-            style: {
-              background: "#ef4444",
-            },
+            backgroundColor: "#16a34a",
         }).showToast();
-        
-        return;
     }
 
-    if (cart.length === 0) return;
-    if (addressInput.value === '') {
-        addressWarn.classList.remove('hidden')
-        addressInput.classList.add('border-red-500')
-        return;
-    }
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const name = button.dataset.name;
+            const price = parseFloat(button.dataset.price);
+            addToCart(name, price);
+        });
+    });
 
-    const cartItems = cart.map((item) => {
-        return (
-            ` ${item.name} Quantidade: (${item.quantity}) Preço: R$ ${item.price.toFixed(2)} |`
-        )
-    }).join("")
+    cartBtn.addEventListener("click", () => {
+        cartModal.classList.remove("hidden");
+    });
 
-    const message = encodeURIComponent(cartItems)
-    const phone = "5521965667947"
+    closeModalBtn.addEventListener("click", () => {
+        cartModal.classList.add("hidden");
+    });
 
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+    window.addEventListener("click", (event) => {
+        if (event.target === cartModal) {
+            cartModal.classList.add("hidden");
+        }
+    });
 
-    cart = []
-    addressInput.value = ''
-    updateCartModal();
+    checkoutBtn.addEventListener("click", () => {
+        const address = document.getElementById("address").value;
+        if (!address) {
+            alert("Por favor, insira o endereço de entrega!");
+        } else {
+            let orderDetails = `Pedido\n\nProdutos\n`;
+            let total = 0;
+
+            cart.forEach(item => {
+                orderDetails += `${item.name} ${item.quantity}x ${formatCurrency(item.price)}\n`;
+                if (item.observation) {
+                    orderDetails += `Observação: ${item.observation}\n`;
+                } else {
+                    orderDetails += `Observação: Sem observação\n`;
+                }
+                total += item.price * item.quantity;
+            });
+
+            orderDetails += `\nEndereço de entrega\n${address}\n`;
+            const deliveryFee = 3.00;
+            orderDetails += `\nEntrega\n${formatCurrency(deliveryFee)}\n`;
+
+            const finalTotal = total + deliveryFee;
+            orderDetails += `\nTotal\n${formatCurrency(finalTotal)}`;
+
+            const whatsappNumber = '5521965667947';
+            const whatsappMessage = encodeURIComponent(orderDetails);
+
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+            window.open(whatsappLink, '_blank');
+
+            cart = [];
+            updateCart();
+
+            cartModal.classList.add("hidden");
+            document.getElementById("address").value = "";
+            showToast("Pedido finalizado com sucesso! Você será redirecionado para o WhatsApp.");
+        }
+    });
 });
-
-function checkRestaurantOpen() {
-    const data = new Date()
-    const hora = data.getHours()
-    return hora >= 18 && hora < 22
-}
-
-const spanItem = document.getElementById('date-span')
-const isOpen = checkRestaurantOpen()
-
-if (isOpen) {
-    spanItem.classList.remove('bg-red-500')
-    spanItem.classList.add('bg-green-600')
-} else {
-    spanItem.classList.remove('bg-green-600')
-    spanItem.classList.add('bg-red-500')
-}
