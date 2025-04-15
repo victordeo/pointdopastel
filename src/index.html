@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="!scroll-smooth">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,10 +13,10 @@
     <title>Point do Pastel</title>
 </head>
 <body>
-    <header class="w-full h-[340px] md:h-[420px] bg-zinc-900 bg-banner bg-cover bg-center mb-6">
+    <header class="w-full h-[340px] md:h-[420px] bg-zinc-900 bg-banner bg-cover bg-center mb-0">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <img src="assets/images/logo.png" alt="Logo Point do Pastel" class="w-36 h-36">
-            <h1 class="text-4xl mt-0 mb-2 font-extrabold text-gray-800 text-b"><span class="text-r">Point</span> do Pastel</h1>
+            <h1 class="text-4xl mt-0 mb-2 font-extrabold text-gray-800 text-b"><span class="text-red-600">Point</span> do Pastel</h1>
             <span class="text-gray-800 font-medium">Rua Raimundo Brito de Oliveira, 579</span>
             <span class="text-gray-800 font-medium">Posse - Nova Iguaçu</span>
             <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
@@ -24,28 +24,28 @@
             </div>
         </div>
     </header>
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white shadow-md sticky top-0 z-10 mt-0">
         <div class="max-w-7xl mx-auto px-4">
           <div class="overflow-x-auto">
             <div class="flex justify-center min-w-fit py-2">
               <div class="flex space-x-8 whitespace-nowrap">
-                <a href="#qj"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Queijo</a>
-                <a href="#fr"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Frango</a>
-                <a href="#clb"  class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Calabresa</a>
-                <a href="#pr"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Presunto</a>
-                <a href="#car"  class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Carne</a>
-                <a href="#lg"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Light</a>
-                <a href="#pk"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Point Kids</a>
-                <a href="#dc"   class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Doces</a>
-                <a href="#bbd"  class="text-black font-semibold px-4 py-2 rounded hover:bg-red-500 hover:text-white transition">Bebidas</a>
+                <a href="#qj" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Queijo</a>
+                <a href="#fr" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Frango</a>
+                <a href="#clb" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Calabresa</a>
+                <a href="#pr" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Presunto</a>
+                <a href="#car" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Carne</a>
+                <a href="#lg" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Light</a>
+                <a href="#pk" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Point Kids</a>
+                <a href="#dc" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Doces</a>
+                <a href="#bbd" class="text-medium text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Bebidas</a>
               </div>
             </div>
           </div>
         </div>
-    </nav>  
+    </nav> 
     <div id="menu mt-9">
-        <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="qj">Queijo</h2>
+        <div class="mx-auto mt-6 max-w-7xl px-2 my-2 scroll-mt-20" id="qj">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl">Queijo</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -116,7 +116,7 @@
                     <div class="flex items-center gap-2 justify-between mt-3">
                         <p class="font-medium text-gray-700">R$ 12,00</p>
                         <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
-                        data-name="Frango"
+                        data-name="Bacon"
                         data-price="12.00">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
@@ -125,7 +125,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="fr">Frango</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="fr">Frango</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -280,7 +280,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="clb">Calabresa</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="clb">Calabresa</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -390,7 +390,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="pr">Presunto</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="pr">Presunto</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -530,7 +530,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="car">Carne</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="car">Carne</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -670,7 +670,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="lg">Light</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="lg">Light</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -735,7 +735,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="pk">Point Kids</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="pk">Point Kids</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -875,7 +875,7 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="dc">Doces</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="dc">Doces</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
             <div class="card flex gap-2 p-4 rounded">
@@ -1240,18 +1240,48 @@
             </div>
         </div>
         <div class="mx-auto max-w-7xl px-2 my-2">
-            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl" id="bbd">Bebidas</h2>
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="bbd">Bebidas</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8" id="menu">
             <div class="card p-4 flex gap-2 w-full">
-                <img src="assets/images/coca.png" alt="Coca-Cola" class="w-28 h-28 rounded-md">
+                <img src="assets/images/lata.png" alt="Refrigerante 350ml" class="w-28 h-28 rounded-md">
                 <div class="w-full">
-                    <p class="text-medium font-semibold text-gray-700">Coca-Cola</p>
+                    <p class="text-medium font-semibold text-gray-700">Refrigerante 350ml</p>
                     <p class="text-sm font-light text-gray-500"><br></p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <p class="font-medium text-gray-700">R$ 5,00</p>
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
                         <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
-                        data-name="Coca lata"
+                        data-name="Refrigerante lata"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/guaravita.png" alt="Guaravita" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Guaravita</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 2,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaravita"
+                        data-price="2.5">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/aguasg.png" alt="Água sem gás" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Água sem gás</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 2,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Água sem gás"
                         data-price="5">
                             <i class=" fa fa-cart-plus text-lg text-white"></i>
                         </button>
@@ -1259,15 +1289,90 @@
                 </div>
             </div>
             <div class="card p-4 flex gap-2 w-full">
-                <img src="assets/images/guarana.png" alt="Guaraná" class="w-28 h-28 rounded-md">
+                <img src="assets/images/aguacg.png" alt="Água com gás" class="w-28 h-28 rounded-md">
                 <div class="w-full">
-                    <p class="text-medium font-semibold text-gray-700">Guaraná</p>
+                    <p class="text-medium font-semibold text-gray-700">Água com gás</p>
                     <p class="text-sm font-light text-gray-500"><br></p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <p class="font-medium text-gray-700">R$ 5,00</p>
+                        <p class="font-medium text-gray-700">R$ 3,00</p>
                         <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
-                        data-name="Guaraná"
-                        data-price="5">
+                        data-name="Água com gás"
+                        data-price="3">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/limoneto.png" alt="H2OH! limoneto" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">H2OH! limoneto</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 7,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="H2OH! limoneto"
+                        data-price="7">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/coca.png" alt="Coca-Cola 2l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Coca-Cola 2l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 15,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-Cola 2l"
+                        data-price="15">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/cocazero.png" alt="Coca-Cola zero 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Coca-Cola zero 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-Cola zero 1.5l"
+                        data-price="12">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/guarana.png" alt="Guaraná 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Guaraná 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 10,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaraná 1.5l"
+                        data-price="10">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full mb-5">
+                <img src="assets/images/delvalle.png" alt="Del Valle 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="text-medium font-semibold text-gray-700">Del Valle 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 10,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Del Valle 1.5l"
+                        data-price="10">
                             <i class=" fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1275,7 +1380,7 @@
             </div>
         </div>
     </div>
-    <div id="cart-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <div id="cart-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-20">
         <div class="bg-white p-6 rounded-lg w-96">
             <h2 class="text-xl font-semibold text-gray-800 md:text-2xl mb-4">Meu Carrinho</h2>
             <div id="cart-items"></div>

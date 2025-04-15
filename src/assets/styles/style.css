@@ -4,6 +4,7 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -20,10 +21,6 @@ body {
 
 .text-primary {
     color: #f38b1c;
-}
-
-.text-r{
-    color: #e73333;
 }
 
 .text-b{
