@@ -7,10 +7,19 @@
     scroll-behavior: smooth;
 }
 
-body {
+body{
     background-color: #f4f5f7;
 }
 
+.scrollbar-hide::-webkit-scrollbar{
+   display: none;
+}
+  
+.scrollbar-hide{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+  
 .bg-banner{
     background-image: url(/src/assets/images/bg.png);
 }
@@ -19,7 +28,7 @@ body {
     background-color: #e99f2e;
 }
 
-.text-primary {
+.text-primary{
     color: #f38b1c;
 }
 
