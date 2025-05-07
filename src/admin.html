@@ -8,34 +8,183 @@
   <link rel="stylesheet" href="/src/assets/styles/style.css">
   <script defer src="/src/assets/js/script.js"></script>
 </head>
-<body">
-  <!--Navbar-->
+<body class="bg-gray-100">
+  <!-- Navbar -->
   <header class="w-full h-[65px] bg-zinc-900 bg-banner bg-cover bg-center mb-0 relative">
   </header>
   <nav class="relative bg-white shadow-md p-3 mb-2 flex items-center space-x-6 pl-[10.3%]">
-      <div class="absolute top-0 left-0 w-1/12 flex justify-center -translate-y-10 mx-6">
-          <img src="/src/assets/images/logo.png" class="w-24 h-24 object-contain">
-      </div>
-      <div class="w-8/12 flex gap-2">
-          <h1 class="text-red-600 font-semibold px-4 py-2 rounded">Painel de Gestão</h1>
-          <a href="/src/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Início</a>
-          <a href="/src/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Produtos</a>
-          <a href="/src/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Pedidos</a>
-          <a href="/src/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Relatórios</a>
-      </div>
+    <div class="absolute top-0 left-0 w-1/12 flex justify-center -translate-y-10 mx-6">
+      <img src="/src/assets/images/logo.png" class="w-24 h-24 object-contain">
+    </div>
+    <div class="w-8/12 flex gap-2">
+      <h1 class="text-red-600 font-semibold px-4 py-2 rounded">Painel de Gestão</h1>
+      <a href="#inicio" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Início</a>
+      <a href="#produtos" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Produtos</a>
+      <a href="#pedidos" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Pedidos</a>
+      <a href="#relatorios" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Relatórios</a>
+    </div>
   </nav>
 
-  <!--Navegação da página-->
-  <main class="flex gap-2 mx-6 mb-4">
-    <div class="card w-full overflow-y-auto bg-white">
-      <div class="flex space-x-8 justify-center">
-        <div class="card text-center " data-category="">
+  <!-- Conteúdo principal -->
+  <main class="flex flex-col gap-6 px-6 pb-10">
 
+    <!-- Início -->
+    <section id="inicio" class="bg-white rounded shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Visão Geral</h2>
+      <p class="text-gray-700">Bem-vindo ao painel de gestão! Aqui você pode acompanhar o desempenho do seu negócio.</p>
+      <!-- Exemplo de cards resumo -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <div class="bg-red-100 p-4 rounded text-center">
+          <p class="text-sm text-gray-500">Vendas de hoje</p>
+          <p class="text-2xl font-bold">R$ 320,00</p>
+        </div>
+        <div class="bg-yellow-100 p-4 rounded text-center">
+          <p class="text-sm text-gray-500">Pedidos pendentes</p>
+          <p class="text-2xl font-bold">4</p>
+        </div>
+        <div class="bg-green-100 p-4 rounded text-center">
+          <p class="text-sm text-gray-500">Produtos ativos</p>
+          <p class="text-2xl font-bold">18</p>
+        </div>
       </div>
+    </section>
+
+   <!-- Produtos -->
+<section id="produtos" class="bg-white rounded shadow p-6">
+  <h2 class="text-xl font-semibold mb-4">Produtos</h2>
+  <button id="btnNovoProduto" class="mb-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">Novo Produto</button>
   
-    </div>
+  
+  <table class="w-full text-left">
+    <thead>
+      <tr class="text-gray-700 border-b">
+        <th class="py-2">Nome</th>
+        <th class="py-2">Preço</th>
+        <th class="py-2">Categoria</th>
+        <th class="py-2">Ativo</th>
+        <th class="py-2">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b hover:bg-gray-50">
+        <td class="py-2">Pastel de Queijo</td>
+        <td class="py-2">R$ 6,00</td>
+        <td class="py-2">Tradicional</td>
+        <td class="py-2">
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox" checked class="sr-only peer">
+            <div class="w-11 h-6 bg-gray-300 rounded-full peer-checked:bg-green-500 relative transition-colors duration-300">
+              <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform duration-300 peer-checked:translate-x-5"></div>
+            </div>
+          </label>          
+        </td>
+        <td class="py-2">
+          <button class="text-blue-600 hover:underline">Editar</button>
+          <button class="text-red-600 hover:underline ml-2">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+    <!-- Pedidos -->
+    <section id="pedidos" class="bg-white rounded shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Pedidos Recentes</h2>
+      <table class="w-full text-left">
+        <thead>
+          <tr class="text-gray-700 border-b">
+            <th class="py-2">#ID</th>
+            <th class="py-2">Cliente</th>
+            <th class="py-2">Itens</th>
+            <th class="py-2">Total</th>
+            <th class="py-2">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="py-2">#1023</td>
+            <td class="py-2">João Silva</td>
+            <td class="py-2">3</td>
+            <td class="py-2">R$ 18,00</td>
+            <td class="py-2 text-yellow-600">Em preparo</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Relatórios -->
+    <section id="relatorios" class="bg-white rounded shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Relatórios</h2>
+      <p class="text-gray-700 mb-2">Selecione o período:</p>
+      <input type="date" class="border p-2 rounded mr-2">
+      <input type="date" class="border p-2 rounded">
+      <button class="ml-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Gerar</button>
+
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-2">Resumo</h3>
+        <ul class="list-disc list-inside text-gray-700">
+          <li>Pedidos: 125</li>
+          <li>Faturamento: R$ 2.450,00</li>
+          <li>Produtos mais vendidos: Pastel de Carne, Pastel de Queijo</li>
+        </ul>
+      </div>
+    </section>
 
   </main>
-  
+
+  <!-- Modal de Novo Produto -->
+<div id="modalProduto" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-full max-w-md">
+    <h3 class="text-xl font-semibold mb-4">Novo Produto</h3>
+    <form id="formNovoProduto" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nome</label>
+        <input type="text" class="w-full border rounded p-2" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Preço</label>
+        <input type="number" step="0.01" class="w-full border rounded p-2" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Categoria</label>
+        <input type="text" class="w-full border rounded p-2" required>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-sm font-medium text-gray-700">Ativo</label>
+        <input type="checkbox" class="toggle-ativo">
+      </div>
+      <div class="flex justify-end gap-2">
+        <button type="button" id="btnCancelar" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+          Cancelar
+        </button>
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<script defer>
+  const btnNovoProduto = document.getElementById('btnNovoProduto');
+  const modalProduto = document.getElementById('modalProduto');
+  const btnCancelar = document.getElementById('btnCancelar');
+
+  btnNovoProduto.addEventListener('click', () => {
+    modalProduto.classList.remove('hidden');
+  });
+
+  btnCancelar.addEventListener('click', () => {
+    modalProduto.classList.add('hidden');
+  });
+
+  modalProduto.addEventListener('click', (e) => {
+    if (e.target === modalProduto) {
+      modalProduto.classList.add('hidden');
+    }
+  });
+</script>
+
 </body>
 </html>
+
