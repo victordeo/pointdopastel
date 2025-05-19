@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const nameInput = document.getElementById("client-name");
     const cartItems = document.getElementById("cart-items");
     const cartTotal = document.getElementById("cart-total");
     const cartCount = document.getElementById("cart-count");
@@ -200,20 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        let orderDetails = `Pedido\n\nProdutos\n`;
+        const name = nameInput.value || "Não informado";
+        let orderDetails = `*Cliente*: ${name}\n\n*Pedido*\n\n`;
         let subtotal = 0;
 
         cart.forEach(item => {
             orderDetails += `${item.name} ${item.quantity}x ${formatCurrency(item.price)}\n`;
-            orderDetails += `Observação: ${item.observation || "Sem observação"}\n`;
+            orderDetails += `Observação: ${item.observation || "Sem observação"}\n\n`;
             subtotal += item.price * item.quantity;
         });
 
         const total = subtotal + taxaEntrega;
 
-        orderDetails += `\nEndereço de entrega:\n${address}\n`;
-        orderDetails += `\nTaxa de entrega: ${formatCurrency(taxaEntrega)}`;
-        orderDetails += `\nTotal: ${formatCurrency(total)}`;
+        orderDetails += `*Endereço de entrega:*\n${address}\n`;
+        orderDetails += `\n*Taxa de entrega:* ${formatCurrency(taxaEntrega)}`;
+        orderDetails += `\n*Total:* ${formatCurrency(total)}`;
 
         const whatsappNumber = '5521965667947';
         const whatsappMessage = encodeURIComponent(orderDetails);
