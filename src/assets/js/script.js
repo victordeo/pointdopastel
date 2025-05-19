@@ -7,8 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkoutBtn = document.getElementById("checkout-btn");
     const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
     const cartBtn = document.getElementById("cart-btn");
+    const addressInput = document.getElementById("address");
+    const deliveryInfo = document.getElementById("delivery-info");
+    const addressError = document.getElementById("address-error");
+
+    const accessToken = 'pk.eyJ1IjoiMHJpb24iLCJhIjoiY21hdjZxcG0wMDFjODJwcHV2aWt6a2dzaCJ9.zE4zdJTkK6IVvEBseIVVxw'; // Substitua pela sua chave Mapbox
+    const enderecoLoja = 'R. Frei Frederico Vier, 167 B - Posse, Nova Iguaçu - RJ, 26022-830'; // Endereço da loja
 
     let cart = [];
+    let taxaEntrega = 0;
 
     function formatCurrency(value) {
         return `R$ ${value.toFixed(2).replace('.', ',')}`;
@@ -19,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let total = 0;
         let itemCount = 0;
 
-        cart.forEach((item, index) => {
+        cart.forEach((item) => {
             const itemDiv = document.createElement("div");
             itemDiv.classList.add("flex", "justify-between", "items-center", "mb-1");
 
@@ -50,7 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
             itemCount += item.quantity;
         });
 
-        cartTotal.textContent = formatCurrency(total);
+        const totalComEntrega = total + taxaEntrega;
+        cartTotal.textContent = formatCurrency(totalComEntrega);
         cartCount.textContent = itemCount;
     }
 
@@ -88,6 +96,81 @@ document.addEventListener("DOMContentLoaded", () => {
         }).showToast();
     }
 
+    async function geocodificar(endereco) {
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(endereco)}.json?access_token=${accessToken}`;
+        const resp = await fetch(url);
+        const dados = await resp.json();
+        return dados.features[0]?.center;
+    }
+
+    async function calcularTaxaEntrega(enderecoCliente) {
+        const origem = await geocodificar(enderecoLoja);
+        const destino = await geocodificar(enderecoCliente);
+        if (!origem || !destino) throw new Error("Endereço inválido");
+
+        const rotaUrl = `https://api.mapbox.com/directions/v5/mapbox/driving/${origem[0]},${origem[1]};${destino[0]},${destino[1]}?access_token=${accessToken}`;
+        const rotaResp = await fetch(rotaUrl);
+        const rotaDados = await rotaResp.json();
+
+        const rota = rotaDados.routes[0];
+        const distanciaKm = rota.distance / 1000;
+        const tempoMin = rota.duration / 60;
+
+        let taxa = 0;
+
+        if (distanciaKm <= 0.5) {
+            taxa = 3.00;
+        } else if (distanciaKm <= 3) {
+            taxa = 4.00;
+        } else if (distanciaKm <= 4.5) {
+            taxa = 5.00;
+        } else if (distanciaKm <= 5) {
+            taxa = 6.00;
+        } else if (distanciaKm <= 6) {
+            throw new Error("Não realizamos entregas acima de 5km.");
+        } else {
+            throw new Error("Fora da área de entrega. Limite: 6km.");
+        }
+
+        return {
+            distanciaKm: distanciaKm.toFixed(2),
+            tempoMin: tempoMin.toFixed(0),
+            taxa: parseFloat(taxa.toFixed(2))
+        };
+    }
+
+    let typingTimer;
+    addressInput.addEventListener("input", () => {
+        clearTimeout(typingTimer);
+        if (addressInput.value.length < 5) {
+            deliveryInfo.textContent = "";
+            addressError.classList.add("hidden");
+            checkoutBtn.disabled = true;
+            return;
+        }
+
+        typingTimer = setTimeout(async () => {
+            try {
+                deliveryInfo.textContent = "Calculando taxa de entrega...";
+                addressError.classList.add("hidden");
+
+                const { distanciaKm, tempoMin, taxa } = await calcularTaxaEntrega(addressInput.value);
+                taxaEntrega = taxa;
+                deliveryInfo.innerHTML = `Total Taxa de Entrega: ${formatCurrency(taxa)}`;
+                checkoutBtn.disabled = false;
+                updateCart();
+            } catch (err) {
+                deliveryInfo.textContent = "";
+                taxaEntrega = 0;
+                updateCart();
+
+                addressError.textContent = err.message;
+                addressError.classList.remove("hidden");
+                checkoutBtn.disabled = true;
+            }
+        }, 1000);
+    });
+
     addToCartButtons.forEach(button => {
         button.addEventListener("click", () => {
             const name = button.dataset.name;
@@ -111,43 +194,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     checkoutBtn.addEventListener("click", () => {
-        const address = document.getElementById("address").value;
+        const address = addressInput.value;
         if (!address) {
             alert("Por favor, insira o endereço de entrega!");
-        } else {
-            let orderDetails = `Pedido\n\nProdutos\n`;
-            let total = 0;
-
-            cart.forEach(item => {
-                orderDetails += `${item.name} ${item.quantity}x ${formatCurrency(item.price)}\n`;
-                if (item.observation) {
-                    orderDetails += `Observação: ${item.observation}\n`;
-                } else {
-                    orderDetails += `Observação: Sem observação\n`;
-                }
-                total += item.price * item.quantity;
-            });
-
-            orderDetails += `\nEndereço de entrega\n${address}\n`;
-            const deliveryFee = 3.00;
-            orderDetails += `\nEntrega\n${formatCurrency(deliveryFee)}\n`;
-
-            const finalTotal = total + deliveryFee;
-            orderDetails += `\nTotal\n${formatCurrency(finalTotal)}`;
-
-            const whatsappNumber = '5521965667947';
-            const whatsappMessage = encodeURIComponent(orderDetails);
-
-            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-            window.open(whatsappLink, '_blank');
-
-            cart = [];
-            updateCart();
-
-            cartModal.classList.add("hidden");
-            document.getElementById("address").value = "";
-            showToast("Pedido finalizado com sucesso! Você será redirecionado para o WhatsApp.");
+            return;
         }
+
+        let orderDetails = `Pedido\n\nProdutos\n`;
+        let subtotal = 0;
+
+        cart.forEach(item => {
+            orderDetails += `${item.name} ${item.quantity}x ${formatCurrency(item.price)}\n`;
+            orderDetails += `Observação: ${item.observation || "Sem observação"}\n`;
+            subtotal += item.price * item.quantity;
+        });
+
+        const total = subtotal + taxaEntrega;
+
+        orderDetails += `\nEndereço de entrega:\n${address}\n`;
+        orderDetails += `\nTaxa de entrega: ${formatCurrency(taxaEntrega)}`;
+        orderDetails += `\nTotal: ${formatCurrency(total)}`;
+
+        const whatsappNumber = '5521965667947';
+        const whatsappMessage = encodeURIComponent(orderDetails);
+        const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+        window.open(whatsappLink, '_blank');
+
+        cart = [];
+        taxaEntrega = 0;
+        updateCart();
+        cartModal.classList.add("hidden");
+        addressInput.value = "";
+        deliveryInfo.textContent = "";
+        addressError.classList.add("hidden");
+        showToast("Pedido finalizado com sucesso! Você será redirecionado para o WhatsApp.");
     });
 });
