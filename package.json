@@ -4,5 +4,26 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17"
-  }
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "name": "pointdopastel",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victordeo/pointdopastel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victordeo/pointdopastel/issues"
+  },
+  "homepage": "https://github.com/victordeo/pointdopastel#readme",
+  "description": ""
 }
