@@ -105,21 +105,29 @@
         <div class="card w-8/12 max-h-[75vh] overflow-y-auto">
             <div class="grid grid-cols-3 gap-2 px-2 mb-8">
                <!--Início dos itens-->
-                <div class="flex flex-col p-4 produto" data-category="queijo">
-                    <div class="flex justify-between gap-2">
-                        <img src="assets/images/queijo.png" alt="Queijo mussarela" class="w-20 h-20 rounded-t-md">
+                    <div class="flex flex-col p-4 produto" data-category="queijo">
+                        <div class="relative">
+                        <div class="flex justify-between gap-2">
+                            <img src="assets/images/queijo.png" alt="Queijo mussarela" class="w-20 h-20 rounded-t-md">
+                            <div class="w-full">
+                                <p class="font-semibold text-gray-700">Queijo mussarela</p>
+                                <p class="text-xs font-light text-gray-500"></p>
+                            </div>
+                        </div>
                         <div class="w-full">
-                            <p class="font-semibold text-gray-700">Queijo mussarela</p>
-                            <p class="text-xs font-light text-gray-500"></p>
+                            <button class="bg-primary w-full rounded-b-md p-1 add-to-cart-btn hover:bg-orange-300 duration-300"
+                                data-name="Queijo mussarela" data-price="12.00">
+                                <p class="font-medium text-white text-sm">R$ 12,00</p>
+                            </button>
+                        </div>
+                        <div class="absolute inset-0 bg-white rounded-md opacity-60"></div> 
+                        <div class="absolute top-0 left-0 overflow-hidden w-28 h-28">
+                        <span class="absolute z-100 w-52 py-0.5 text-sm text-center text-primary-contrast transform -rotate-45 shadow bg-primary top-6 -right-6 sm:top-7 sm:-right-8">
+                        Indisponível
+                        </span>
+                        </div>
                         </div>
                     </div>
-                    <div class="w-full">
-                        <button class="bg-primary w-full rounded-b-md p-1 add-to-cart-btn hover:bg-orange-300 duration-300"
-                            data-name="Queijo mussarela" data-price="12.00">
-                            <p class="font-medium text-white text-sm">R$ 12,00</p>
-                        </button>
-                    </div>
-                </div>
                 <div class="flex flex-col p-4 produto" data-category="queijo">
                     <div class="flex justify-between gap-2">
                         <img src="assets/images/queijo.png" alt="Queijo minas" class="w-20 h-20 rounded-t-md">
