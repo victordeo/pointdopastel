@@ -69,6 +69,30 @@ app.post('/login', (req, res) => {
   });
 });
 
+// ROTA SEGURA PARA CRIAR O PRIMEIRO ADMIN
+app.post('/criar-admin', async (req, res) => {
+  const { usuario, senha } = req.body;
+
+  db.query('SELECT COUNT(*) as total FROM admin', async (err, results) => {
+    if (err) return res.status(500).send('Erro ao acessar o banco.');
+    
+    if (results[0].total > 0) {
+      return res.status(403).send('Já existe um administrador. Criação bloqueada.');
+    }
+
+    try {
+      const hash = await bcrypt.hash(senha, 10);
+      db.query('INSERT INTO admin (usuario, senha_hash) VALUES (?, ?)', [usuario, hash], (err) => {
+        if (err) return res.status(500).send('Erro ao criar administrador.');
+        res.send('✅ Administrador criado com sucesso.');
+      });
+    } catch (error) {
+      res.status(500).send('Erro ao gerar hash da senha.');
+    }
+  });
+});
+
+
 // INICIAR SERVIDOR
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em: http://localhost:${PORT}`);
