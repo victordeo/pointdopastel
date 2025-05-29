@@ -28,7 +28,7 @@ CREATE TABLE `admin` (
   `senha_hash` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `admin` (
 --
 
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin','81dc9bdb52d04dc20036dbd8313ed055');
+INSERT INTO `admin` VALUES (3,'admin','$2b$10$JYtCk2dZEMhQbpeFzhjbue5cemKWreNnvJ5tfa9DhnqAOlYCyCDsW');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
 --
@@ -49,8 +49,10 @@ DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `slug` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,6 +60,7 @@ CREATE TABLE `categorias` (
 --
 
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
+INSERT INTO `categorias` VALUES (1,'Queijo','qj'),(2,'Frango','fr'),(3,'Calabresa','clb'),(4,'Presunto','pr'),(5,'Carne','car'),(6,'Light','lg'),(7,'Point Kids','pk'),(8,'Doces','dc'),(9,'Bebidas','bbd');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 
 --
@@ -157,6 +160,7 @@ CREATE TABLE `produtos` (
   `preco` decimal(10,2) NOT NULL,
   `ativo` tinyint(1) DEFAULT 1,
   `categoria_id` int(11) DEFAULT NULL,
+  `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `categoria_id` (`categoria_id`),
   CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`)
@@ -183,4 +187,4 @@ CREATE TABLE `produtos` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-25 18:31:38
+-- Dump completed on 2025-05-29  4:05:05
