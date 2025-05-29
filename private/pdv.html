@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/public/toastify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="/public/assets/styles/output.css">
-    <link rel="shortcut icon" href="/public/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/output.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
     <title>Point do Pastel</title>
 </head>
 <body>
@@ -17,13 +17,13 @@
     </header>
     <nav class="relative bg-white shadow-md p-3 mb-2 flex items-center space-x-6 pl-[10.3%]">
         <div class="absolute top-0 left-0 w-1/12 flex justify-center -translate-y-10 mx-6">
-            <img src="/public/assets/images/logo.png" class="w-24 h-24 object-contain">
+            <img src="/assets/images/logo.png" class="w-24 h-24 object-contain">
         </div>
         <div class="w-8/12 flex gap-2">
             <h1 class="text-red-600 font-semibold px-4 py-2 rounded">Frente de caixa</h1>
             <a href="#" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Mesas</a>
             <a href="#" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Pedidos</a>
-            <a href="/public/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Painel de gestão</a>
+            <a href="/admin.html" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Painel de gestão</a>
         </div>
     </nav>
     <main class="flex gap-2 mx-6 mb-4">
@@ -31,7 +31,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="queijo">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                        <img src="/public/assets/images/queijo.png" alt="Queijo" class="w-20 h-20 rounded-md">
+                        <img src="/assets/images/queijo.png" alt="Queijo" class="w-20 h-20 rounded-md">
                     </a>
                     <p class="font-semibold text-gray-700">Queijo</p>
                 </div>
@@ -39,7 +39,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="frango">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                        <img src="/public/assets/images/frango.jpg" alt="Frango" class="w-20 h-20 rounded-md">
+                        <img src="/assets/images/frango.jpg" alt="Frango" class="w-20 h-20 rounded-md">
                     </a>
                     <p class="font-semibold text-gray-700">Frango</p>
                 </div>
@@ -47,7 +47,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="calabresa">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                        <img src="/public/assets/images/calabresa.jpg" alt="Calabresa" class="w-20 h-20 rounded-md">
+                        <img src="/assets/images/calabresa.jpg" alt="Calabresa" class="w-20 h-20 rounded-md">
                     </a>
                     <p class="font-semibold text-gray-700">Calabresa</p>
                 </div>
@@ -55,7 +55,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="presunto">    
                 <div class="flex flex-col items-center">
                 <a href="#">
-                    <img src="/public/assets/images/presunto.JPG" alt="Presunto" class="w-20 h-20 rounded-md">
+                    <img src="/assets/images/presunto.JPG" alt="Presunto" class="w-20 h-20 rounded-md">
                 </a>
                 <p class="font-semibold text-gray-700">Presunto</p>
                 </div>
@@ -63,7 +63,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="carne">
                 <div class="flex flex-col items-center">
                 <a href="#">
-                    <img src="/public/assets/images/carne.jpg" alt="Carne" class="w-20 h-20 rounded-md">
+                    <img src="/assets/images/carne.jpg" alt="Carne" class="w-20 h-20 rounded-md">
                 </a>
                 <p class="font-semibold text-gray-700">Carne</p>
                 </div>
@@ -71,7 +71,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="light">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                        <img src="/public/assets/images/light.JPG" alt="Light" class="w-20 h-20 rounded-md">
+                        <img src="/assets/images/light.JPG" alt="Light" class="w-20 h-20 rounded-md">
                     </a>
                     <p class="font-semibold text-gray-700">Light</p>
                 </div>
@@ -79,7 +79,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="kids">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                    <img src="/public/assets/images/kids.png" alt="Point Kids" class="w-20 h-20 rounded-md">
+                    <img src="/assets/images/kids.png" alt="Point Kids" class="w-20 h-20 rounded-md">
                 </a>
                 <p class="font-semibold text-gray-700">Point Kids</p>
                 </div>
@@ -87,7 +87,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="doce">
                 <div class="flex flex-col items-center">
                     <a href="#">
-                        <img src="/public/assets/images/doce.jpg" alt="Doces" class="w-20 h-20 rounded-md">
+                        <img src="/assets/images/doce.jpg" alt="Doces" class="w-20 h-20 rounded-md">
                     </a>
                     <p class="font-semibold text-gray-700">Doces</p>
                 </div>
@@ -95,7 +95,7 @@
             <div class="card p-2 cursor-pointer transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg rounded-md category-button" data-category="bebida">
                 <div class="flex flex-col items-center">
                 <a href="#">
-                    <img src="/public/assets/images/lata.png" alt="Bebidas" class="w-20 h-20 rounded-md">
+                    <img src="/assets/images/lata.png" alt="Bebidas" class="w-20 h-20 rounded-md">
                 </a>
                 <p class="font-semibold text-gray-700">Bebidas</p>
                 </div>
@@ -1381,6 +1381,6 @@
             </div>
         </div>
     </main>
-    <script src="/public/assets/js/pdv.js"></script>
+    <script src="/js/pdv.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ const mysql = require('mysql2');
 const bcrypt = require('bcrypt');
 const path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,27 +21,51 @@ db.connect(err => {
   else console.log('✅ Banco conectado com sucesso!');
 });
 
+// Middleware para sessão
+app.use(session({
+  secret: 'chave_super_secreta_123!', // coloque algo seguro aqui
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 60 * 60 } // 1 hora
+}));
+
 // Permitir leitura de formulários (POST)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-// SERVIR PÚBLICO: HTML, CSS, JS, etc.
+// Servir arquivos públicos (HTML, CSS, JS, etc)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// BLOQUEAR ACESSO DIRETO A PÁGINAS PROTEGIDAS
-app.get('/pdv.html', (req, res) => {
-  res.redirect('/login.html');
-});
-app.get('/admin.html', (req, res) => {
+// Middleware para proteger rotas privadas
+function verificarLogin(req, res, next) {
+  if (req.session.usuario) {
+    next();
+  } else {
+    res.redirect('/login.html');
+  }
+}
+
+// Rotas públicas
+app.get('/', (req, res) => {
   res.redirect('/login.html');
 });
 
-// ROTA RAIZ → redireciona para login.html
-app.get('/', (req, res) => {
+app.get('/login.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// ROTA DE LOGIN
+// Logout
+app.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.log('Erro ao destruir sessão:', err);
+      return res.status(500).send('Erro ao sair.');
+    }
+    res.redirect('/login.html');
+  });
+});
+
+// Login POST
 app.post('/login', (req, res) => {
   const { usuario, password } = req.body;
 
@@ -58,24 +83,36 @@ app.post('/login', (req, res) => {
       return res.status(401).send('Senha incorreta.');
     }
 
+    // Salvar usuário na sessão
+    req.session.usuario = usuario;
+
     console.log(`✅ Login autorizado: ${usuario}`);
 
-    // 🔐 Redirecionamento para a página correta
+    // Redirecionar conforme usuário
     if (usuario === 'admin') {
-      res.sendFile(path.join(__dirname, 'private', 'admin.html'));
+      res.redirect('/admin.html');
     } else {
-      res.sendFile(path.join(__dirname, 'private', 'pdv.html'));
+      res.redirect('/pdv.html');
     }
   });
 });
 
-// ROTA SEGURA PARA CRIAR O PRIMEIRO ADMIN
+// Rotas protegidas (acesso só com login)
+app.get('/admin.html', verificarLogin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'private', 'admin.html'));
+});
+
+app.get('/pdv.html', verificarLogin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'private', 'pdv.html'));
+});
+
+// Rota segura para criar primeiro admin (opcional)
 app.post('/criar-admin', async (req, res) => {
   const { usuario, senha } = req.body;
 
   db.query('SELECT COUNT(*) as total FROM admin', async (err, results) => {
     if (err) return res.status(500).send('Erro ao acessar o banco.');
-    
+
     if (results[0].total > 0) {
       return res.status(403).send('Já existe um administrador. Criação bloqueada.');
     }
@@ -92,8 +129,7 @@ app.post('/criar-admin', async (req, res) => {
   });
 });
 
-
-// INICIAR SERVIDOR
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em: http://localhost:${PORT}`);
 });

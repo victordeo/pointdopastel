@@ -1,29 +1,35 @@
 {
-  "scripts": {
-    "dev": "npx tailwindcss -i ./public/styles/style.css -o ./public/styles/output.css --watch"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.4.17"
-  },
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "body-parser": "^2.2.0",
-    "express": "^5.1.0",
-    "mysql2": "^3.14.1"
-  },
   "name": "pointdopastel",
   "version": "1.0.0",
-  "main": "tailwind.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/victordeo/pointdopastel.git"
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./input/style.css -o ./public/styles/output.css --watch",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run tailwind\" \"npm run server\"",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "nodemon": "^3.1.10",
+    "tailwindcss": "^3.4.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victordeo/pointdopastel.git"
+  },
   "bugs": {
     "url": "https://github.com/victordeo/pointdopastel/issues"
   },
-  "homepage": "https://github.com/victordeo/pointdopastel#readme",
-  "description": ""
+  "homepage": "https://github.com/victordeo/pointdopastel#readme"
 }
