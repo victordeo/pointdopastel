@@ -21,7 +21,7 @@ body{
 }
   
 .bg-banner{
-    background-image: url(/src/assets/images/bg.png);
+    background-image: url(/public/assets/images/bg.png);
 }
 
 .bg-primary{
