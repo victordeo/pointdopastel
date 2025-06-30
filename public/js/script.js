@@ -11,59 +11,54 @@ const categoriaMap = {
 };
 
 let carrinho = [];
+let taxaEntrega = 0;
+
+const accessToken = 'pk.eyJ1IjoiMHJpb24iLCJhIjoiY21hdjZxcG0wMDFjODJwcHV2aWt6a2dzaCJ9.zE4zdJTkK6IVvEBseIVVxw';
+const enderecoLoja = 'Rua Raimundo Brito de Oliveira, 579, Nova Iguaçu - RJ';
+
+function formatCurrency(value) {
+  return `R$ ${value.toFixed(2).replace('.', ',')}`;
+}
 
 async function carregarProdutos() {
   try {
-    const res = await fetch('/public/produtos');
-    if (!res.ok) throw new Error('Erro ao buscar produtos');
-    const produtos = await res.json();
+    const resp = await fetch('/public/produtos');
+    if (!resp.ok) throw new Error('Erro ao carregar produtos');
+    const produtos = await resp.json();
 
-    // Limpa containers
-    Object.values(categoriaMap).forEach(id => {
-      const container = document.getElementById(id);
-      if (container) container.innerHTML = '';
-    });
-
-    produtos.forEach(produto => {
-      const containerId = categoriaMap[produto.categoria_nome];
-      if (!containerId) return;
-
-      const container = document.getElementById(containerId);
+    // Renderizar produtos por categoria
+    produtos.forEach(prod => {
+      const categoriaId = categoriaMap[prod.categoria_nome];
+      const container = document.getElementById(categoriaId);
       if (!container) return;
 
       const card = document.createElement('div');
-      card.className = "border rounded-md p-4 shadow hover:shadow-lg transition cursor-pointer flex gap-4";
+      card.className = 'card flex gap-2 p-4 border-b';
 
       card.innerHTML = `
-        <div class="w-24 h-24 flex-shrink-0">
-          ${produto.imagem ? `<img src="/assets/images/${produto.imagem}" alt="${produto.nome}" class="object-cover w-full h-full rounded-md">` : `<div class="bg-gray-200 w-full h-full rounded-md flex items-center justify-center text-gray-400">Sem imagem</div>`}
-        </div>
-        <div class="flex flex-col justify-between flex-grow">
-          <h3 class="font-semibold text-lg text-gray-800">${produto.nome}</h3>
-          <p class="text-sm text-gray-600">${produto.descricao || ''}</p>
-          <div class="flex justify-between items-center mt-2">
-            <span class="font-bold text-red-600">R$ ${Number(produto.preco).toFixed(2)}</span>
-            <button class="add-to-cart px-3 py-1 bg-green-600 text-white rounded-md text-sm" data-id="${produto.id}" data-nome="${produto.nome}" data-preco="${produto.preco}">+ Carrinho</button>
-          </div>
+        <img src="/assets/images/${prod.imagem}" alt="${prod.nome}" class="w-28 h-28 rounded-md">
+        <div class="w-full">
+            <p class="font-semibold text-gray-700">${prod.nome}</p>
+            <p class="text-sm font-light text-gray-500">${prod.descricao || ''}</p>
+            <div class="flex items-center gap-2 justify-between mt-3">
+                <p class="font-medium text-gray-700">R$ ${parseFloat(prod.preco).toFixed(2).replace('.', ',')}</p>
+                <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                  onclick="adicionarAoCarrinho({ id: ${prod.id}, nome: '${prod.nome}', preco: ${prod.preco}, quantidade: 1 })">
+                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                </button>
+            </div>
         </div>
       `;
 
       container.appendChild(card);
     });
 
-    // Adiciona eventos aos botões
-    document.querySelectorAll('.add-to-cart').forEach(btn => {
-      btn.addEventListener('click', e => {
-        const id = e.currentTarget.dataset.id;
-        const nome = e.currentTarget.dataset.nome;
-        const preco = parseFloat(e.currentTarget.dataset.preco);
-        adicionarAoCarrinho({ id, nome, preco, quantidade: 1 });
-      });
-    });
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error('Erro ao carregar produtos:', err);
+    alert('Erro ao exibir os produtos.');
   }
 }
+
 
 function adicionarAoCarrinho(item) {
   const index = carrinho.findIndex(i => i.id === item.id);
@@ -74,15 +69,12 @@ function adicionarAoCarrinho(item) {
   }
   atualizarContadorCarrinho();
   Toastify({
-  text: `"${item.nome}" adicionado ao carrinho`,
-  duration: 2000,
-  gravity: "top",
-  position: "right",
-  style: {
-    background: "linear-gradient(to right, #00b09b, #96c93d)",
-  },
-}).showToast();
-
+    text: `"${item.nome}" adicionado ao carrinho`,
+    duration: 2000,
+    gravity: "top",
+    position: "right",
+    style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+  }).showToast();
 }
 
 function atualizarContadorCarrinho() {
@@ -90,22 +82,10 @@ function atualizarContadorCarrinho() {
   document.getElementById('cart-count').textContent = count;
 }
 
-const cartBtn = document.getElementById('cart-btn');
-const cartModal = document.getElementById('cart-modal');
-const closeModalBtn = document.getElementById('close-modal-btn');
-const cartItemsContainer = document.getElementById('cart-items');
-const cartTotalSpan = document.getElementById('cart-total');
-
-cartBtn.addEventListener('click', () => {
-  renderCartItems();
-  cartModal.classList.remove('hidden');
-});
-
-closeModalBtn.addEventListener('click', () => {
-  cartModal.classList.add('hidden');
-});
-
 function renderCartItems() {
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalSpan = document.getElementById('cart-total');
+
   if (carrinho.length === 0) {
     cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
     cartTotalSpan.textContent = 'R$ 0,00';
@@ -114,20 +94,141 @@ function renderCartItems() {
 
   let html = '';
   let total = 0;
+
   carrinho.forEach(item => {
     const itemTotal = item.preco * item.quantidade;
     total += itemTotal;
 
     html += `
-      <div class="flex justify-between mb-2">
+      <div class="flex justify-between items-center mb-2">
         <span>${item.nome} x ${item.quantidade}</span>
         <span>R$ ${itemTotal.toFixed(2)}</span>
       </div>
+      <input type="text" placeholder="Observação"
+        class="mb-4 mt-1 p-2 border border-gray-200 w-full rounded text-sm font-light text-gray-500"
+        value="${item.observacao || ''}"
+        oninput="carrinho.find(p => p.id == '${item.id}').observacao = this.value"
+      />
     `;
   });
 
+  const totalComFrete = total + taxaEntrega;
   cartItemsContainer.innerHTML = html;
-  cartTotalSpan.textContent = `R$ ${total.toFixed(2)}`;
+  cartTotalSpan.textContent = `R$ ${totalComFrete.toFixed(2).replace('.', ',')}`;
 }
 
-window.addEventListener('DOMContentLoaded', carregarProdutos);
+async function geocodificar(endereco) {
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(endereco)}.json?access_token=${accessToken}`;
+  const resp = await fetch(url);
+  const dados = await resp.json();
+  return dados.features[0]?.center;
+}
+
+async function calcularTaxaEntrega(enderecoCliente) {
+  const origem = await geocodificar(enderecoLoja);
+  const destino = await geocodificar(enderecoCliente);
+  if (!origem || !destino) throw new Error("Endereço inválido");
+
+  const rotaUrl = `https://api.mapbox.com/directions/v5/mapbox/driving/${origem[0]},${origem[1]};${destino[0]},${destino[1]}?access_token=${accessToken}`;
+  const rotaResp = await fetch(rotaUrl);
+  const rotaDados = await rotaResp.json();
+
+  const rota = rotaDados.routes[0];
+  const distanciaKm = rota.distance / 1000;
+  const tempoMin = rota.duration / 60;
+
+  let taxa = 0;
+  if (distanciaKm <= 0.5) taxa = 3.00;
+  else if (distanciaKm <= 3) taxa = 4.00;
+  else if (distanciaKm <= 4.5) taxa = 5.00;
+  else if (distanciaKm <= 5) taxa = 6.00;
+  else throw new Error("Fora da área de entrega (máx. 5km)");
+
+  return {
+    distanciaKm: distanciaKm.toFixed(2),
+    tempoMin: tempoMin.toFixed(0),
+    taxa: parseFloat(taxa.toFixed(2))
+  };
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  carregarProdutos();
+
+  const addressInput = document.getElementById("address");
+  const deliveryInfo = document.getElementById("delivery-info");
+  const addressError = document.getElementById("address-error");
+  const checkoutBtn = document.getElementById("checkout-btn");
+  const nameInput = document.getElementById("client-name");
+
+  let typingTimer;
+  addressInput.addEventListener("input", () => {
+    clearTimeout(typingTimer);
+    if (addressInput.value.length < 5) {
+      deliveryInfo.textContent = "";
+      addressError.classList.add("hidden");
+      checkoutBtn.disabled = true;
+      return;
+    }
+
+    typingTimer = setTimeout(async () => {
+      try {
+        deliveryInfo.textContent = "Calculando taxa de entrega...";
+        const { taxa } = await calcularTaxaEntrega(addressInput.value);
+        taxaEntrega = taxa;
+        deliveryInfo.innerHTML = `Taxa de entrega: ${formatCurrency(taxa)}`;
+        addressError.classList.add("hidden");
+        checkoutBtn.disabled = false;
+        renderCartItems();
+      } catch (err) {
+        taxaEntrega = 0;
+        deliveryInfo.textContent = "";
+        addressError.textContent = err.message;
+        addressError.classList.remove("hidden");
+        checkoutBtn.disabled = true;
+        renderCartItems();
+      }
+    }, 1000);
+  });
+
+  document.getElementById('cart-btn').addEventListener('click', () => {
+    renderCartItems();
+    document.getElementById('cart-modal').classList.remove('hidden');
+  });
+
+  document.getElementById('close-modal-btn').addEventListener('click', () => {
+    document.getElementById('cart-modal').classList.add('hidden');
+  });
+
+  checkoutBtn.addEventListener("click", () => {
+    const endereco = addressInput.value.trim();
+    if (!endereco) return alert("Digite o endereço");
+
+    const nome = nameInput.value.trim() || "Não informado";
+
+    let texto = `*Cliente:* ${nome}\n\n*Pedido*\n\n`;
+    let subtotal = 0;
+
+    carrinho.forEach(item => {
+      texto += `${item.nome} ${item.quantidade}x ${formatCurrency(item.preco)}\n`;
+      texto += `Obs: ${item.observacao || "Sem observação"}\n\n`;
+      subtotal += item.preco * item.quantidade;
+    });
+
+    const total = subtotal + taxaEntrega;
+
+    texto += `*Endereço:* ${endereco}\n`;
+    texto += `*Taxa de entrega:* ${formatCurrency(taxaEntrega)}\n`;
+    texto += `*Total:* ${formatCurrency(total)}`;
+
+    const link = `https://wa.me/5521965667947?text=${encodeURIComponent(texto)}`;
+    window.open(link, '_blank');
+
+    carrinho = [];
+    taxaEntrega = 0;
+    document.getElementById('cart-modal').classList.add('hidden');
+    addressInput.value = '';
+    nameInput.value = '';
+    deliveryInfo.textContent = '';
+    atualizarContadorCarrinho();
+  });
+});

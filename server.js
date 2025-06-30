@@ -26,14 +26,13 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Configuração da conexão MySQL
+// Conexão com banco de dados MySQL
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '', // Ajuste conforme sua senha
+  password: '', // Altere conforme sua senha
   database: 'point_pastel'
 });
-
 db.connect(err => {
   if (err) {
     console.error('Erro ao conectar no banco:', err);
@@ -42,9 +41,7 @@ db.connect(err => {
   }
 });
 
-// --- Middleware: ordem importante ---
-
-// Sessão deve ser carregada antes das rotas que a usam
+// Configuração de sessão
 app.use(session({
   secret: 'chave_super_secreta_123!',
   resave: false,
@@ -52,14 +49,12 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 } // 1 hora
 }));
 
-// Para ler bodies das requisições POST (formulários e JSON)
+// Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Middleware para proteger rotas privadas
+// Middleware de autenticação
 function verificarLogin(req, res, next) {
   if (req.session && req.session.usuario) {
     next();
@@ -68,9 +63,7 @@ function verificarLogin(req, res, next) {
   }
 }
 
-// Rotas públicas
-
-// ROTA PÚBLICA: para o delivery listar produtos sem login
+// ROTA PÚBLICA: listar produtos ativos para delivery
 app.get('/public/produtos', (req, res) => {
   const sql = `
     SELECT 
@@ -80,7 +73,6 @@ app.get('/public/produtos', (req, res) => {
     JOIN categorias ON produtos.categoria_id = categorias.id
     WHERE produtos.ativo = 1
   `;
-
   db.query(sql, (err, results) => {
     if (err) {
       console.error('Erro ao buscar produtos:', err);
@@ -90,70 +82,52 @@ app.get('/public/produtos', (req, res) => {
   });
 });
 
-
-app.get('/', (req, res) => {
-  res.redirect('/login.html');
-});
-
+// Páginas
+app.get('/', (req, res) => res.redirect('/login.html'));
 app.get('/login.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
-// Login POST
+// Login
 app.post('/login', (req, res) => {
   const { usuario, password } = req.body;
-
   db.query('SELECT * FROM admin WHERE usuario = ?', [usuario], async (err, results) => {
     if (err || results.length === 0) {
-      console.log('❌ Usuário não encontrado');
       return res.status(401).send('Usuário inválido.');
     }
 
     const user = results[0];
     const match = await bcrypt.compare(password, user.senha_hash);
 
-    if (!match) {
-      console.log('❌ Senha incorreta');
-      return res.status(401).send('Senha incorreta.');
-    }
+    if (!match) return res.status(401).send('Senha incorreta.');
 
-    // Salvar usuário na sessão
     req.session.usuario = usuario;
-
     console.log(`✅ Login autorizado: ${usuario}`);
 
-    // Redirecionar conforme usuário
-    if (usuario === 'admin') {
-      res.redirect('/admin.html');
-    } else {
-      res.redirect('/pdv.html');
-    }
+    if (usuario === 'admin') res.redirect('/admin.html');
+    else res.redirect('/pdv.html');
   });
 });
 
 // Logout
 app.get('/logout', (req, res) => {
   req.session.destroy(err => {
-    if (err) {
-      console.log('Erro ao destruir sessão:', err);
-      return res.status(500).send('Erro ao sair.');
-    }
+    if (err) return res.status(500).send('Erro ao sair.');
     res.redirect('/login.html');
   });
 });
 
-// Rotas protegidas (só acessível com login)
+// Páginas protegidas
 app.get('/admin.html', verificarLogin, (req, res) => {
   res.sendFile(path.join(__dirname, 'private', 'admin.html'));
 });
-
 app.get('/pdv.html', verificarLogin, (req, res) => {
   res.sendFile(path.join(__dirname, 'private', 'pdv.html'));
 });
 
-// API Produtos
+// === API Produtos ===
 
-// Listar produtos
+// Listar todos os produtos
 app.get('/api/produtos', verificarLogin, (req, res) => {
   const sql = `
     SELECT 
@@ -162,7 +136,6 @@ app.get('/api/produtos', verificarLogin, (req, res) => {
     FROM produtos
     JOIN categorias ON produtos.categoria_id = categorias.id
   `;
-
   db.query(sql, (err, results) => {
     if (err) {
       console.error('Erro ao buscar produtos:', err);
@@ -172,7 +145,7 @@ app.get('/api/produtos', verificarLogin, (req, res) => {
   });
 });
 
-// Criar produto
+// Criar novo produto
 app.post('/api/produtos', verificarLogin, upload.single('imagem'), (req, res) => {
   const { nome, descricao, preco, categoria_id, ativo } = req.body;
   const imagem = req.file ? req.file.filename : null;
@@ -191,15 +164,13 @@ app.post('/api/produtos', verificarLogin, upload.single('imagem'), (req, res) =>
   });
 });
 
-// Atualizar produto (exemplo simples, adaptar conforme necessário)
+// Atualizar produto (com ou sem nova imagem)
 app.put('/api/produtos/:id', verificarLogin, upload.single('imagem'), (req, res) => {
   const id = req.params.id;
   const { nome, descricao, preco, categoria_id, ativo } = req.body;
   const imagem = req.file ? req.file.filename : null;
 
-  let sql;
-  let params;
-
+  let sql, params;
   if (imagem) {
     sql = `UPDATE produtos SET nome = ?, descricao = ?, preco = ?, ativo = ?, categoria_id = ?, imagem = ? WHERE id = ?`;
     params = [nome, descricao, preco, ativo ? 1 : 0, categoria_id, imagem, id];
@@ -217,10 +188,28 @@ app.put('/api/produtos/:id', verificarLogin, upload.single('imagem'), (req, res)
   });
 });
 
+// Atualizar somente o campo "ativo" (checkbox)
+app.patch('/api/produtos/:id/disponibilidade', verificarLogin, (req, res) => {
+  const id = req.params.id;
+  const { ativo } = req.body;
+
+  const sql = `UPDATE produtos SET ativo = ? WHERE id = ?`;
+
+  db.query(sql, [ativo ? 1 : 0, id], (err) => {
+    if (err) {
+      console.error('Erro ao atualizar disponibilidade:', err);
+      return res.status(500).send('Erro ao atualizar disponibilidade');
+    }
+    res.send('Disponibilidade atualizada com sucesso');
+  });
+});
+
+
 // Deletar produto
 app.delete('/api/produtos/:id', verificarLogin, (req, res) => {
   const id = req.params.id;
   const sql = `DELETE FROM produtos WHERE id = ?`;
+
   db.query(sql, [id], (err) => {
     if (err) {
       console.error('Erro ao deletar produto:', err);
@@ -230,7 +219,9 @@ app.delete('/api/produtos/:id', verificarLogin, (req, res) => {
   });
 });
 
-// Categorias API (listar)
+// === API Categorias ===
+
+// Listar categorias
 app.get('/api/categorias', verificarLogin, (req, res) => {
   db.query('SELECT id, nome FROM categorias', (err, results) => {
     if (err) {
@@ -241,7 +232,7 @@ app.get('/api/categorias', verificarLogin, (req, res) => {
   });
 });
 
-// Servidor
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em: http://localhost:${PORT}`);
 });

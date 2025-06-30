@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/public/toastify.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="/styles/output.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <title>Cardápio</title>
+</head>
+<body>
+    <header class="w-full h-[340px] md:h-[420px] bg-zinc-900 bg-banner bg-cover bg-center mb-0">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img src="/assets/images/logo.png" alt="Logo Point do Pastel" class="w-36 h-36">
+            <h1 class="text-4xl mt-0 mb-2 font-extrabold text-gray-800 text-b"><span class="text-red-600">Point</span> do Pastel</h1>
+            <span class="text-gray-800 font-medium">Rua Raimundo Brito de Oliveira, 579</span>
+            <span class="text-gray-800 font-medium">Posse - Nova Iguaçu</span>
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
+                <span class="text-white font-light">Sexta a Dom - 18h30 as 00h00</span>
+            </div>
+        </div>
+    </header>
+    <nav class="bg-white shadow-md sticky top-0 z-10 mt-0">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="overflow-x-auto scrollbar-hide">
+            <div class="flex justify-center min-w-fit py-2">
+              <div class="flex space-x-8 whitespace-nowrap">
+                <a href="#qj" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Queijo</a>
+                <a href="#fr" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Frango</a>
+                <a href="#clb" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Calabresa</a>
+                <a href="#pr" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Presunto</a>
+                <a href="#car" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Carne</a>
+                <a href="#lg" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Light</a>
+                <a href="#pk" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Point Kids</a>
+                <a href="#dc" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Doces</a>
+                <a href="#bbd" class="text-gray-700 font-semibold px-4 py-2 rounded hover:bg-red-600 hover:text-white transition">Bebidas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav> 
+    <div id="menu mt-9">
+        <div class="mx-auto mt-6 max-w-7xl px-2 my-2 scroll-mt-20" id="qj">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl">Queijo</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card relative flex gap-2 p-4">
+                <img src="assets/images/queijo.png" alt="Queijo mussarela" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Queijo mussarela</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Queijo mussarela"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-white rounded-md opacity-60"></div>
+                <div class="absolute top-0 left-0 overflow-hidden w-28 h-28">
+                    <span class="absolute w-52 py-0.5 text-sm text-center text-primary-contrast transform -rotate-45 shadow bg-primary top-6 -right-6 sm:top-7 sm:-right-8">
+                        Indisponível
+                    </span>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                    <img src="assets/images/queijo.png" alt="Queijo minas" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Queijo minas</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Queijo minas"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/queijo.png" alt="Alho" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Alho</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela com alho.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Alho"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/queijo.png" alt="Quatro queijos" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Quatro queijos</p>
+                    <p class="text-sm font-light text-gray-500">Minas, mussarela, provolone e catupiry.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Quatro queijos"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/queijo.png" alt="Palmito" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Palmito</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela com palmito.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Palmito"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/queijo.png" alt="Bacon" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Bacon</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela com bacon.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Bacon"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="fr">Frango</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Frango" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Frango</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Frango"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Frango com catupiry" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Frango com catupiry</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Frango com catupiry"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Frango com mussarela" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Frango com mussarela</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Frango com mussarela"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Piu-Piu" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Piu-Piu</p>
+                    <p class="text-sm font-light text-gray-500">Frango, mussarela, ovo de codorna e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Piu-Piu"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Mineiro" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Mineiro</p>
+                    <p class="text-sm font-light text-gray-500">Frango, mussarela, milho, catupiry e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Mineiro"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Galinha caipira" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Galinha caipira</p>
+                    <p class="text-sm font-light text-gray-500">Frango, mussarela, milho, ervilha, azeitona e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Galinha caipira"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Golden" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Golden</p>
+                    <p class="text-sm font-light text-gray-500">Frango, palmito e mussarela.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Golden"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Salada" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Salada</p>
+                    <p class="text-sm font-light text-gray-500">Frango, mussarela, batata palha, presunto, milho e uva passas.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Salada"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="paulista" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Paulista</p>
+                    <p class="text-sm font-light text-gray-500">Frango, calabresa, cebola, orégano, azeitona e mussarela.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Paulista"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/frango.jpg" alt="Primavera" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Primavera</p>
+                    <p class="text-sm font-light text-gray-500">Frango, milho, ervilha, palmito e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Primavera"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="clb">Calabresa</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Calabresa" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Calabresa</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, mussarela e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Calabresa"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Beleza" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Beleza</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, mussarela, azeitona e tomate</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Beleza"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Baiano" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Baiano</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, mussarela e molho de pimenta.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Baiano"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Batalha" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Batalha</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, mussarela, milho, ervilha, azeitona e catupiry.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Batalha"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Canadense" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Canadense</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, palmito, catupiry e provolone.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Canadense"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Bravo" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Bravo</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, mussarela, alho torrado, cebola e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Bravo"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/calabresa.jpg" alt="Oficial" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Oficial</p>
+                    <p class="text-sm font-light text-gray-500">Calabresa, catupiry, tomate, cebola e batata palha.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Oficial"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="pr">Presunto</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Misto" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Misto</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto e orégano.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Misto"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Master" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Master</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, milho, palmito e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Master"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Carioca" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carioca</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, ovo de codorna, catupiry e bacon.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carioca"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Pizza" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Pizza</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, tomate, azeitona, cebola e orégano.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Pizza"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Portuguesa" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Portuguesa</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, calabresa, ovo de codorna, azeitona, cebola e orégano.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Portuguesa"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Culpado" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Culpado</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, catupiry, milho, ervilha e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Culpado"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Magnífico" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Magnífico</p>
+                    <p class="text-sm font-light text-gray-500">Presunto, calabresa, catupiry, cebola e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Magnífico"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Mistério" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Mistério</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, alho torrado, palmito e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Mistério"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/presunto.JPG" alt="Supremo" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Supremo</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto, batata palha, catupiry e milho.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Supremo"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="car">Carne</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Carne" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carne</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carne"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Carne com catupiry" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carne com catupiry</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carne com catupiry"
+                        data-price="12.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Carne com mussarela" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carne com mussarela</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carne com mussarela"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Oba" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Oba</p>
+                    <p class="text-sm font-light text-gray-500">Carne, mussarela, cebola e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Oba"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Delícia" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Delícia</p>
+                    <p class="text-sm font-light text-gray-500">Carne, mussarela, alho torrado e ovo de codorna</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Delícia"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Frajola" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Frajola</p>
+                    <p class="text-sm font-light text-gray-500">Carne, ovo de codorna, azeitona, cebola e catupiry.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Frajola"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Jóia" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Jóia</p>
+                    <p class="text-sm font-light text-gray-500">Carne, calabresa, mussarela, tomate e cebola.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Jóia"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Bárbaro" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Bárbaro</p>
+                    <p class="text-sm font-light text-gray-500">Carne, catupiry e bacon.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 15,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Bárbaro"
+                        data-price="15.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/carne.jpg" alt="Romano" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Romano</p>
+                    <p class="text-sm font-light text-gray-500">Carne, mussarela, ovo de codorna, palmito, cebola, orégano e azeitona.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Romano"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="lg">Light</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/light.jpg" alt="Vegetariano" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Vegetariano</p>
+                    <p class="text-sm font-light text-gray-500">Minas, tomate, cebola, milho, ervilha, azeitona e ovo de codorna.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Vegetariano"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/light.jpg" alt="Paraíso" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Paraíso</p>
+                    <p class="text-sm font-light text-gray-500">Minas, presunto, azeitona, ovo de codorna, ervilha e milho.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Paraíso"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/light.jpg" alt="Tropical" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Tropical</p>
+                    <p class="text-sm font-light text-gray-500">Frango, minas, catupiry, milho, ervilha e orégano.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Tropical"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/light.jpg" alt="Especial" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Especial</p>
+                    <p class="text-sm font-light text-gray-500">Frango, alho torrado, catupiry, cebola, tomate, palmito, milho e ervilha.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Especial"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="pk">Point Kids</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Queijo mussarela" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Queijo mussarela</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 8,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Queijo mussarela(Kids)"
+                        data-price="8.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Queijo minas" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Queijo minas</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 8,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Queijo minas(Kids)"
+                        data-price="8.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Carne" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carne</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 7,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carne(Kids)"
+                        data-price="7.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Frango" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Frango</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 7,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Frango(Kids)"
+                        data-price="7.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Misto" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Misto</p>
+                    <p class="text-sm font-light text-gray-500">Mussarela, presunto e orégano.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 8,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Misto(Kids)"
+                        data-price="8.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Chocolate branco" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Chocolate branco</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 9,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Chocolate branco(Kids)"
+                        data-price="9.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Chocolate ao leite" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Chocolate ao leite</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 9,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Chocolate ao leite(Kids)"
+                        data-price="9.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Point" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Point</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate ao leite, chocolate branco e coco ralado.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 9,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Point(Kids)"
+                        data-price="9.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Romeu e Julieta" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Romeu e Julieta</p>
+                    <p class="text-sm font-light text-gray-500">Minas e goiabada.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 8,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Romeu e Julieta(Kids)"
+                        data-price="8.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Água na boca" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Água na boca</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate ao leite e banana.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 9,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Água na boca(Kids)"
+                        data-price="9.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/kids.png" alt="Biju" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Biju</p>
+                    <p class="text-sm font-light text-gray-500">Doce de leite, ameixa e coco ralado.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 9,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Biju"
+                        data-price="9.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="dc">Doces</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8">
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Churros" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Churros</p>
+                    <p class="text-sm font-light text-gray-500">Doce de leite com canela.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Churros"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Fabuloso" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Fabuloso</p>
+                    <p class="text-sm font-light text-gray-500">Doce de leite com paçoca.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Fabuloso"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Banana" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Banana</p>
+                    <p class="text-sm font-light text-gray-500">Banana, açucar e canela.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Banana"
+                        data-price="12.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Água na boca" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Água na boca</p>
+                    <p class="text-sm font-light text-gray-500">Banana com chocolate.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Água na boca"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Biju" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Biju</p>
+                    <p class="text-sm font-light text-gray-500">Doce de leite, coco e ameixa.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Biju"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Chocolate preto" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Chocolate preto</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Chocolate preto"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Chocolate branco" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Chocolate branco</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 17,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Chocolate branco"
+                        data-price="17.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Morango" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Morango</p>
+                    <p class="text-sm font-light text-gray-500">Morango com chocolate.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Morango"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Point" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Point</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate ao leite, chocolate branco e coco ralado.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Point"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Romeu e Julieta" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Romeu e Julieta</p>
+                    <p class="text-sm font-light text-gray-500">Minas e goiabada.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Romeu e Julieta"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Serenata" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Serenata</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate ao leite com bombom serenata.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Serenata"
+                        data-price="14.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Kit Kat" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Kit Kat</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate com Kit Kat.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Kit Kat"
+                        data-price="14.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Moreno" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Moreno</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate com amendoim.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Moreno"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Pecado" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Pecado</p>
+                    <p class="text-sm font-light text-gray-500">Banana, leite condensado, mussarela, açúcar e canela.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Pecado"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Confete" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Confete</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate preto e confete.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Confete"
+                        data-price="14.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Carinhoso" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Carinhoso</p>
+                    <p class="text-sm font-light text-gray-500">Banana, minas e doce de leite.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Carinhoso"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Dois irmãos" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Dois irmãos</p>
+                    <p class="text-sm font-light text-gray-500">Goiabada com catupiry.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Dois irmão"
+                        data-price="13.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Amor a dois" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Amor a dois</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate com ovomaltine.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 15,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Amor a dois"
+                        data-price="15.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Devastador" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Devastador</p>
+                    <p class="text-sm font-light text-gray-500">Banana, ovomaltine e leite ninho.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 13,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Devastador"
+                        data-price="13.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Perdão" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Perdão</p>
+                    <p class="text-sm font-light text-gray-500">Banana, ovomaltine, mussarela e leite ninho.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Perdão"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Caribe" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Caribe</p>
+                    <p class="text-sm font-light text-gray-500">Banana com doce de leite.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Caribe"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Sensação" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Sensação</p>
+                    <p class="text-sm font-light text-gray-500">Morango com doce de leite.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Sensação"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Sonho" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Sonho</p>
+                    <p class="text-sm font-light text-gray-500">Doce de leite, ovomaltine e banana.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Sonho"
+                        data-price="14.00">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card flex gap-2 p-4">
+                <img src="assets/images/doce.jpg" alt="Divino" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Divino</p>
+                    <p class="text-sm font-light text-gray-500">Chocolate, amendoim e ovomaltine.</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 14,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Divino"
+                        data-price="14.50">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-2 my-2">
+            <h2 class="text-xl px-4 font-semibold text-gray-800 md:text-2xl scroll-mt-20" id="bbd">Bebidas</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 mx-auto max-w-7xl px-2 mb-8" id="menu">
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/cocalata.jpg" alt="Coca-Cola lata 350ml" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Coca-cola 350ml</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-cola lata 350ml"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/cocazerolata.jpg" alt="Coca-Cola lata zero 350ml" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Coca-Cola zero 350ml</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-Cola lata zero 350ml"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/guaranalata.jpg" alt="Guaraná Antarctica lata 350ml" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Guaraná Antarctica 350ml</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaraná Antarctica lata 350ml"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/fantauvalata.jpg" alt="Fanta uva lata 350ml" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Fanta uva 350ml</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Fanta uva lata 350ml"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/fantalaralata.jpg" alt="Fanta laranja lata 350ml" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Fanta laranja 350ml</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 6,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Fanta laranja lata 350ml"
+                        data-price="6">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/guaravita.png" alt="Guaravita" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Guaravita</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 2,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaravita"
+                        data-price="2.5">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/aguasg.png" alt="Água sem gás" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Água sem gás</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 2,50</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Água sem gás"
+                        data-price="5">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/aguacg.png" alt="Água com gás" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Água com gás</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 3,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Água com gás"
+                        data-price="3">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/limoneto.png" alt="H2OH! limoneto" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">H2OH! limoneto</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 7,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="H2OH! limoneto"
+                        data-price="7">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/coca.png" alt="Coca-Cola 2l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Coca-Cola 2l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 15,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-Cola 2l"
+                        data-price="15">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/cocazero.png" alt="Coca-Cola zero 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Coca-Cola zero 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 12,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Coca-Cola zero 1.5l"
+                        data-price="12">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full">
+                <img src="assets/images/guarana.png" alt="Guaraná 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Guaraná 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 10,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Guaraná 1.5l"
+                        data-price="10">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-4 flex gap-2 w-full mb-5">
+                <img src="assets/images/delvalle.png" alt="Del Valle 1.5l" class="w-28 h-28 rounded-md">
+                <div class="w-full">
+                    <p class="font-semibold text-gray-700">Del Valle 1.5l</p>
+                    <p class="text-sm font-light text-gray-500"><br></p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <p class="font-medium text-gray-700">R$ 10,00</p>
+                        <button class="bg-primary px-5 rounded add-to-cart-btn hover:bg-orange-300 duration-300"
+                        data-name="Del Valle 1.5l"
+                        data-price="10">
+                            <i class=" fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="cart-modal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center z-20">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h2 class="text-xl font-semibold text-gray-800 md:text-2xl mb-4">Meu Carrinho</h2>
+            <div id="cart-items"></div>
+            <div class="mb-4">
+                <label for="client-name" class="block text-sm font-medium text-gray-700">Seu nome</label>
+                <input type="text" id="client-name" placeholder="Digite seu nome" class="mt-1 p-2 border border-gray-300 rounded w-full text-sm">
+            </div>
+            
+            <div class="mt-4">
+                <label for="address" class="block font-medium text-gray-700">Endereço de entrega:</label>
+                <input type="text" id="address" placeholder="Digite seu endereço" class="mt-1 p-2 border border-gray-200 w-full rounded text-sm font-light text-gray-500">
+            </div>
+            <p id="address-error" class="text-sm text-red-600 font-light mt-1 hidden"></p>
+
+            <div id="delivery-info" class="mt-2 text-sm text-gray-600 font-light"></div>
+            <div class="mt-4 flex justify-between">
+                <span class="font-semibold text-gray-700">Total</span>
+                <span id="cart-total" class="font-semibold text-gray-700">R$ 0,00</span>
+            </div>
+            <div class="mt-4 flex justify-between">
+                <button id="close-modal-btn" class="px-4 py-2 bg-red-600 text-white rounded-md">Fechar</button>
+                <button id="checkout-btn" class="px-4 py-2 bg-green-600 text-white rounded-md">Finalizar</button>
+            </div>
+        </div>
+    </div>
+    <footer class="w-full bg-primary fixed bottom-0 z-40 flex items-center justify-center">
+        <button class="w-full h-full p-2 flex justify-center items-center gap-2 text-white font-semibold hover:bg-orange-300 duration-300" id="cart-btn">
+            <span id="cart-count" class="bg-white rounded-full text-primary text-sm w-6 h-6 flex items-center justify-center">0</span>
+            Ver carrinho
+            <i class="fa fa-cart-plus text-lg text-white"></i>
+        </button>
+    </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>
