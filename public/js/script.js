@@ -34,7 +34,6 @@ async function carregarProdutos() {
 
       const card = document.createElement('div');
       card.className = 'card flex gap-2 p-4 border-b';
-
       card.innerHTML = `
         <img src="/assets/images/${prod.imagem}" alt="${prod.nome}" class="w-28 h-28 rounded-md">
         <div class="w-full">
@@ -57,6 +56,12 @@ async function carregarProdutos() {
     console.error('Erro ao carregar produtos:', err);
     alert('Erro ao exibir os produtos.');
   }
+}
+
+function removerDoCarrinho(id) {
+  carrinho = carrinho.filter(item => item.id !== id);
+  renderCartItems();
+  atualizarContadorCarrinho();
 }
 
 
@@ -100,9 +105,15 @@ function renderCartItems() {
     total += itemTotal;
 
     html += `
-      <div class="flex justify-between items-center mb-2">
+      <div class="flex justify-between items-center mb-1">
         <span>${item.nome} x ${item.quantidade}</span>
-        <span>R$ ${itemTotal.toFixed(2)}</span>
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-semibold">R$ ${itemTotal.toFixed(2).replace('.', ',')}</span>
+          <button onclick="removerDoCarrinho(${item.id})"
+            class="text-red-600 hover:text-red-800 text-sm" title="Remover item">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
       </div>
       <input type="text" placeholder="Observação"
         class="mb-4 mt-1 p-2 border border-gray-200 w-full rounded text-sm font-light text-gray-500"
@@ -116,6 +127,7 @@ function renderCartItems() {
   cartItemsContainer.innerHTML = html;
   cartTotalSpan.textContent = `R$ ${totalComFrete.toFixed(2).replace('.', ',')}`;
 }
+
 
 async function geocodificar(endereco) {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(endereco)}.json?access_token=${accessToken}`;
