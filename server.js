@@ -7,6 +7,9 @@ const multer = require('multer');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
+const pedidosRoutes = require('./routes/pedidos');
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -124,6 +127,10 @@ app.get('/admin.html', verificarLogin, (req, res) => {
 app.get('/pdv.html', verificarLogin, (req, res) => {
   res.sendFile(path.join(__dirname, 'private', 'pdv.html'));
 });
+app.get('/pedidos.html', verificarLogin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'private', 'pedidos.html'));
+});
+
 
 // === API Produtos ===
 
@@ -231,6 +238,10 @@ app.get('/api/categorias', verificarLogin, (req, res) => {
     res.json(results);
   });
 });
+
+// Monte o router de pedidos sem autenticar aqui
+app.use('/api/pedidos', pedidosRoutes);
+
 
 // Iniciar servidor
 app.listen(PORT, () => {

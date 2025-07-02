@@ -26,7 +26,6 @@ async function carregarProdutos() {
     if (!resp.ok) throw new Error('Erro ao carregar produtos');
     const produtos = await resp.json();
 
-    // Renderizar produtos por categoria
     produtos.forEach(prod => {
       const categoriaId = categoriaMap[prod.categoria_nome];
       const container = document.getElementById(categoriaId);
@@ -48,10 +47,8 @@ async function carregarProdutos() {
             </div>
         </div>
       `;
-
       container.appendChild(card);
     });
-
   } catch (err) {
     console.error('Erro ao carregar produtos:', err);
     alert('Erro ao exibir os produtos.');
@@ -63,7 +60,6 @@ function removerDoCarrinho(id) {
   renderCartItems();
   atualizarContadorCarrinho();
 }
-
 
 function adicionarAoCarrinho(item) {
   const index = carrinho.findIndex(i => i.id === item.id);
@@ -128,7 +124,6 @@ function renderCartItems() {
   cartTotalSpan.textContent = `R$ ${totalComFrete.toFixed(2).replace('.', ',')}`;
 }
 
-
 async function geocodificar(endereco) {
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(endereco)}.json?access_token=${accessToken}`;
   const resp = await fetch(url);
@@ -171,6 +166,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const addressError = document.getElementById("address-error");
   const checkoutBtn = document.getElementById("checkout-btn");
   const nameInput = document.getElementById("client-name");
+  const phoneInput = document.getElementById("client-phone");
 
   let typingTimer;
   addressInput.addEventListener("input", () => {
@@ -216,8 +212,13 @@ window.addEventListener('DOMContentLoaded', () => {
     if (!endereco) return alert("Digite o endereço");
 
     const nome = nameInput.value.trim() || "Não informado";
+    const telefone = phoneInput.value.trim();
+    if (!telefone) return alert("Digite seu telefone (WhatsApp)");
 
-    let texto = `*Cliente:* ${nome}\n\n*Pedido*\n\n`;
+    let texto = `*Cliente:* ${nome}\n`;
+    texto += `*WhatsApp:* ${telefone}\n\n`;
+    texto += `*Pedido*\n\n`;
+
     let subtotal = 0;
 
     carrinho.forEach(item => {
@@ -232,15 +233,35 @@ window.addEventListener('DOMContentLoaded', () => {
     texto += `*Taxa de entrega:* ${formatCurrency(taxaEntrega)}\n`;
     texto += `*Total:* ${formatCurrency(total)}`;
 
-    const link = `https://wa.me/5521965667947?text=${encodeURIComponent(texto)}`;
-    window.open(link, '_blank');
+    fetch('/api/pedidos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cliente: nome,
+        telefone: telefone,
+        endereco,
+        itens: carrinho,
+        taxa_entrega: taxaEntrega,
+        total: total
+      })
+    })
+    .then(res => res.ok ? res.json() : Promise.reject('Erro ao registrar pedido'))
+    .then(data => {
+      const link = `https://wa.me/5521965667947?text=${encodeURIComponent(texto)}`;
+      window.open(link, '_blank');
 
-    carrinho = [];
-    taxaEntrega = 0;
-    document.getElementById('cart-modal').classList.add('hidden');
-    addressInput.value = '';
-    nameInput.value = '';
-    deliveryInfo.textContent = '';
-    atualizarContadorCarrinho();
+      carrinho = [];
+      taxaEntrega = 0;
+      document.getElementById('cart-modal').classList.add('hidden');
+      addressInput.value = '';
+      nameInput.value = '';
+      phoneInput.value = '';
+      deliveryInfo.textContent = '';
+      atualizarContadorCarrinho();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Erro ao finalizar pedido.");
+    });
   });
 });
