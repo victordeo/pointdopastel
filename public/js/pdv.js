@@ -25,15 +25,15 @@ div.dataset.category = mapCategoria[catLower] || catLower;
 
         div.innerHTML = `
           <div class="flex justify-between gap-2">
-            <img src="/assets/images/${prod.imagem}" alt="${prod.nome}" class="w-20 h-20 rounded-md" />
+            <img src="/assets/images/${prod.imagem}" alt="${prod.nome}" class="w-20 h-20 rounded-t-md" />
             <div class="w-full">
               <p class="font-semibold text-gray-700">${prod.nome}</p>
-              <p class="text-xs font-light text-gray-500 truncate">${prod.descricao || ''}</p>
+              <p class="text-xs font-light text-gray-500">${prod.descricao || ''}</p>
             </div>
           </div>
           <div class="w-full">
             <button 
-              class="bg-primary w-full rounded-md p-1 add-to-cart-btn hover:bg-orange-300 duration-300"
+              class="bg-primary w-full rounded-b-md p-1 add-to-cart-btn hover:bg-orange-300 duration-300"
               data-name="${prod.nome}" 
               data-price="${prod.preco}">
                 <p class="font-medium text-white text-sm">R$ ${Number(prod.preco).toFixed(2).replace('.', ',')}</p>
